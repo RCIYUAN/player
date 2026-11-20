@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="never">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>卡哇伊播放器</title>
+    <script src="./hls.min.js"></script>
+    <script src="./danmaku.min.js"></script>
+    <script src="./lottie.min.js"></script>
+    <script src="./player.js"></script>
+    <style>
+        .danmaku-block {
+            width: 320px;
+            min-height: 46px;
+            background-color: #f4f5f7;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="player" style="margin: 0 auto; width: 960px; height: 586px;"></div>
+    <div class="danmaku-block"></div>
+    <script>
+        function selectEp(info) {
+            console.log(info)
+        }
+        let epList = []
+        for (let i = 0; i <= 100; i++) {
+            epList.push({
+                ep_id: i,
+                format_title: `第${i}话`,
+                title: '今日与京都的凶与共',
+                i: i
+            })
+        }
+        window.player && window.player.destroy && window.player.destroy()
+        window.player = new MoePlayer({
+            container: document.querySelector('.player'),
+            // videoSrc: 'https://vip.w.xk.miui.com/05679eec46dcd298d8ab9113c37d2086',
+            cover: 'https://static.kawayi.cc/video/2360f70479781cc11a9e403487a35e02.jpg',
+            title: '黑色五叶草：第17话 破坏者',
+            userInfo: {
+                uid: 1,
+                nickname: '哈哈'
+            },
+            epList: epList,
+            epInfo: {
+                ep_id: 10,
+                media_id: 2882,
+                version:1,
+                ep_index:"1",
+                format_title:"第1话",
+                title:"今日与京都的凶与共",
+                vurl: 'https://yun.66dm.net/SBDM/HanyounoYashahime45.m3u8',
+                // backup_vurl: 'https://new.iskcd.com/20211222/rL87Rcwh/index.m3u8'
+            }
+        })
+    </script>
+</body>
+</html>
